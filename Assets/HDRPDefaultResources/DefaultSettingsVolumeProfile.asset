@@ -16,13 +16,7 @@ MonoBehaviour:
   enable:
     m_OverrideState: 1
     m_Value: 1
-  minGridSize:
-    m_OverrideState: 0
-    m_Value: 50
-  maxGridSize:
-    m_OverrideState: 0
-    m_Value: 2500
-  elevationTransition:
+  gridSize:
     m_OverrideState: 0
     m_Value: 1000
   numLevelOfDetails:
@@ -86,42 +80,6 @@ MonoBehaviour:
   m_SampleCount:
     m_OverrideState: 1
     m_Value: 8
---- !u!114 &-6026464391438864705
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a7ff42a8c5be6646ad3975f3a54c1eb, type: 3}
-  m_Name: DiffusionProfileList
-  m_EditorClassIdentifier: 
-  active: 1
-  diffusionProfiles:
-    m_OverrideState: 1
-    m_Value:
-    - {fileID: 11400000, guid: 404820c4cf36ad944862fa59c56064f0, type: 2}
-    - {fileID: 11400000, guid: 2384dbf2c1c420f45a792fbc315fbfb1, type: 2}
---- !u!114 &-2497503162804482720
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a7ff42a8c5be6646ad3975f3a54c1eb, type: 3}
-  m_Name: DiffusionProfileList
-  m_EditorClassIdentifier: 
-  active: 1
-  diffusionProfiles:
-    m_OverrideState: 1
-    m_Value:
-    - {fileID: 11400000, guid: 404820c4cf36ad944862fa59c56064f0, type: 2}
-    - {fileID: 11400000, guid: 2384dbf2c1c420f45a792fbc315fbfb1, type: 2}
 --- !u!114 &-1016694868962581565
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -194,7 +152,6 @@ MonoBehaviour:
   - {fileID: 448115243408767295}
   - {fileID: -7089757308646879465}
   - {fileID: -8770122170507510650}
-  - {fileID: -2497503162804482720}
 --- !u!114 &448115243408767295
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -221,10 +178,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   upperHemisphereLuxValue:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.4660715
   upperHemisphereLuxColor:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.18750614, y: 0.29181972, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 0
@@ -377,7 +334,7 @@ MonoBehaviour:
   active: 1
   skyType:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   cloudType:
     m_OverrideState: 0
     m_Value: 0
@@ -589,9 +546,6 @@ MonoBehaviour:
     m_Value:
       serializedVersion: 2
       m_Bits: 4294967295
-  specularOcclusion:
-    m_OverrideState: 0
-    m_Value: 0.5
   occluderMotionRejection:
     m_OverrideState: 0
     m_Value: 1
@@ -708,7 +662,6 @@ MonoBehaviour:
   m_Name: HDShadowSettings
   m_EditorClassIdentifier: 
   active: 1
-  interCascadeBorders: 1
   maxShadowDistance:
     m_OverrideState: 1
     m_Value: 150
@@ -729,10 +682,10 @@ MonoBehaviour:
     m_Value: 0.3
   cascadeShadowBorder0:
     m_OverrideState: 1
-    m_Value: 0.06905067
+    m_Value: 0.13333334
   cascadeShadowBorder1:
     m_OverrideState: 1
-    m_Value: 0.05086228
+    m_Value: 0.06666666
   cascadeShadowBorder2:
     m_OverrideState: 0
     m_Value: 0
