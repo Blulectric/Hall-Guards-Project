@@ -13,7 +13,13 @@ public class NPC_EnemySight : MonoBehaviour
     public bool inSight = false;
     //public bool hostile = false; // light should turn red and it will continue to follow player directly overhead, making alarm noise
 
-    public int heatLevel = 0;
+    public float heatLevel = 0;
+
+    public PLYR_Health playerHP;
+
+    public Material redcone;
+    public Material orangecone;
+    public Material bluecone;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +48,7 @@ public class NPC_EnemySight : MonoBehaviour
         if (Physics.Raycast(sightOrigin.position, direction, out hit, Mathf.Infinity) && hit.transform.gameObject.tag == "Player")
         {
             inSight = true;
-            NoticeIcon.enemiesNoticed.Add(gameObject); //good yes its adding, next fix the duplicates issue and hope that .Remove knows which one to remove... then check if UINoticeIcons script is seeing the right position (test moving enemy around while that script debugs the list item's transform pos)
+            //NoticeIcon.enemiesNoticed.Add(gameObject); //good yes its adding, next fix the duplicates issue and hope that .Remove knows which one to remove... then check if UINoticeIcons script is seeing the right position (test moving enemy around while that script debugs the list item's transform pos)
         }
         else
         {
@@ -62,20 +68,32 @@ public class NPC_EnemySight : MonoBehaviour
     {
         if (inSight)
         {
-            sightLight.color = new Color(1.0f, 0.8f, 0); //bombastic orangeish yellow
-            heatLevel = Mathf.Clamp(heatLevel + 1,0,100);
+            heatLevel = Mathf.Clamp(heatLevel + (50 * Time.deltaTime), 0,100);
             updateAlertUIPos();
         }
         else
         {
-            sightLight.color = new Color(0, 1.0f, 0.5f); //epic baja blast blue
-            heatLevel = Mathf.Clamp(heatLevel - 1, 0, 100);
+            heatLevel = Mathf.Clamp(heatLevel - (50 * Time.deltaTime), 0, 100);
         }
-        Debug.Log(heatLevel);
-        if (heatLevel >= 100)
+
+        if (heatLevel > 0)
         {
-            sightLight.color = new Color(1.0f, 0, 0); //red
+            sightLight.color = new Color(1.0f, 0.8f, 0); //orange.
+            gameObject.GetComponent<Renderer>().material = orangecone;
         }
+        else
+        {
+            sightLight.color = new Color(0, 1.0f, 0.5f); //blue.
+            gameObject.GetComponent<Renderer>().material = bluecone;
+        }
+
+        if (heatLevel >= 100 && playerHP.GameOver == false)
+        {
+            sightLight.color = new Color(1.0f, 0, 0); //red.
+            gameObject.GetComponent<Renderer>().material = redcone;
+            playerHP.takeDamage(1);
+        }
+
     }
 
     //updates the position of the on-screen display showing the enemy's detection level
