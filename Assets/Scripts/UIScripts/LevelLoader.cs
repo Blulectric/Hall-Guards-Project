@@ -8,6 +8,8 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
 
     public float transitionTime = 1f;
+
+    private int exitNumber = 42;
     
     // Scene Changer only for now, will need to update when adding extra mode (unless we can solve that so we don't have to go to another scene, but I digress) -Liz
 
@@ -23,15 +25,22 @@ public class LevelLoader : MonoBehaviour
 
         if (Time.timeScale == 0.0f) 
         {
-            Time.timeScale = 1.0f;
+            Time.timeScale = 1f;
         }
 
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene(levelIndex);
+        if (levelIndex == exitNumber) 
+        {
+            Debug.Log("Exit number passed, exiting game now...");
+            Application.Quit();
+        } else 
+        {
+            SceneManager.LoadScene(levelIndex);
+        }
     }
 
-    IEnumerator StartExitGame()
+    /*IEnumerator StartExitGame()
     {
         transition.SetTrigger("Start");
 
@@ -39,11 +48,12 @@ public class LevelLoader : MonoBehaviour
 
         Debug.Log("Game exited, quitting out now...");
         Application.Quit();
-    }
+    }*/
 
     public void ExitGame()
     {
-        StartCoroutine(StartExitGame());
+        //StartCoroutine(StartExitGame());
+        StartCoroutine(LoadLevel(exitNumber));
     }
 
     public void MainMenu()

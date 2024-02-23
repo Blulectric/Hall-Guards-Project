@@ -13,10 +13,6 @@ public class PauseMenu : MonoBehaviour
     public float animationTime = 2f;
 
     // Sets pause to always be false on game start
-    void Awake()
-    {
-        isPaused = false;
-    }
 
     // Update is called once per frame
     void Update()
