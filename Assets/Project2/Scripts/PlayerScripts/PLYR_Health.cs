@@ -8,7 +8,7 @@ public class PLYR_Health : MonoBehaviour
     public int HP = 100;
     public GameObject gameOverPanel;
 
-    public bool GameOver = false;
+    public static bool GameOver = false;
 
     // Start is called before the first frame update
     void Start()

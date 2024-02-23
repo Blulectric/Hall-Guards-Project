@@ -12,19 +12,23 @@ public class UI_PauseMenu : MonoBehaviour
     void OnGUI()
     {
 
-        if (Event.current.Equals(Event.KeyboardEvent("escape")))
+        if (!PLYR_Health.GameOver)
         {
-            toggleMenu = !toggleMenu;
-            if (toggleMenu)
-            {
-                paused();
-            }
-            else
-            {
-                unpaused();
-            }
-        }
 
+            if (Event.current.Equals(Event.KeyboardEvent("escape")))
+            {
+                toggleMenu = !toggleMenu;
+                if (toggleMenu)
+                {
+                    paused();
+                }
+                else
+                {
+                    unpaused();
+                }
+            }
+
+        }
 
         //if (toggleMenu) //could select buttons with W S and space maybe 
         //{
