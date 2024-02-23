@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 30cce575f69406b4db700fdd18040c41
+  - enabled: 1
+    path: Assets/Scenes/LizHallway.unity
+    guid: de13dbdbf93a14c458d395f589a18dcc
   m_configObjects: {}
