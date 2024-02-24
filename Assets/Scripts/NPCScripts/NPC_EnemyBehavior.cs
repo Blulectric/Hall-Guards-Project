@@ -148,10 +148,17 @@ public class NPC_EnemyBehavior : MonoBehaviour
     void BigBadEnemyAI()
     {
 
+        if (WLD_RunGunTrigger.GENOCIDE == true)
+        {
+            agent.stoppingDistance = 24f;
+        }
+
         if (attacking)
         {
+
            // agent.speed = 12f; //gotta go fast   
             agent.SetDestination(PlayerPos.position);
+            transform.rotation = Quaternion.LookRotation(PlayerPos.position - transform.position);
         }
         else //these guys return to their home when not attacking(asleep)
         {

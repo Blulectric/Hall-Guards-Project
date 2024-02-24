@@ -311,7 +311,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1919864423563416394}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.5
+  m_Radius: 2
   m_Speed: 0
   m_Acceleration: 150
   avoidancePriority: 50
@@ -339,10 +339,11 @@ MonoBehaviour:
   agent: {fileID: 8481038998612576171}
   sightScript: {fileID: 0}
   wanderDelay: 5
-  wanderRange: 10
   wanderRegion: {fileID: 0}
   returning: 0
   movementSpeed: 24
+  angularSpeed: 50
+  acceleration: 1
   stopDist: 0
   HP: 100
   myDropDown: 2

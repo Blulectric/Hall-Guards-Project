@@ -73,8 +73,20 @@ public class PLYR_PlayerMovement : MonoBehaviour
             gameObject.transform.localScale = new Vector3(1, Mathf.Lerp(gameObject.transform.localScale.y, 1.0f, t), 1);
         }
 
-        ///////camera///////
-        xRotation -= mouseY;
+
+        if (Input.GetMouseButtonDown(0) && WLD_RunGunTrigger.GENOCIDE == true)
+        {
+            // cast a ray when trying to exit a crouch to check if player will hit their head
+            RaycastHit hit;
+            if (Physics.Raycast(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), out hit, 100f))
+            {
+                Debug.DrawRay(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), Color.red);
+                Debug.Log(hit.transform.name+"shoot ray, though enemies are currently set to ignore raycast.. oops");
+            }
+        }
+
+            ///////camera///////
+            xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
 
         playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
