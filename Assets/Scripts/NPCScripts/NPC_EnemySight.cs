@@ -5,25 +5,29 @@ using UnityEngine;
 public class NPC_EnemySight : MonoBehaviour
 {
 
-    public UI_NoticeIcon NoticeIcon;
+    //public UI_NoticeIcon NoticeIcon;
+    public GameObject enemyBody;
 
     public Transform sightOrigin;
+
     public Light sightLight;
 
-    public bool inSight = false;
-    //public bool hostile = false; // light should turn red and it will continue to follow player directly overhead, making alarm noise
+    public bool inSightofSelf = false; //sets true if just this object sees u
 
-    public float heatLevel = 0;
+    public static bool inSightofAny = false; //global true used by the heatLevel script to make the heat level increase
+
+    public static float heatLevel = 0;
+
+    private Transform PlayerPos;
 
     public PLYR_Health playerHP;
 
-    public Material redcone;
-    public Material orangecone;
-    public Material bluecone;
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerPos = GameObject.Find("FPS Player").transform;
+        inSightofAny = false;
+        heatLevel = 0;
     }
 
 
@@ -31,7 +35,7 @@ public class NPC_EnemySight : MonoBehaviour
     void Update()
     {
 
-        aggroState();
+        whenInSight();
 
     }
 
@@ -47,58 +51,42 @@ public class NPC_EnemySight : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(sightOrigin.position, direction, out hit, Mathf.Infinity) && hit.transform.gameObject.tag == "Player")
         {
-            inSight = true;
-            //NoticeIcon.enemiesNoticed.Add(gameObject); //good yes its adding, next fix the duplicates issue and hope that .Remove knows which one to remove... then check if UINoticeIcons script is seeing the right position (test moving enemy around while that script debugs the list item's transform pos)
+            inSightofSelf = true;
+            inSightofAny = true;
         }
         else
         {
-            inSight = false;
-            //NoticeIcon.enemiesNoticed.Remove(gameObject);
+            inSightofSelf = false;
+            inSightofAny = false;
         }
 
     }
     private void OnTriggerExit(Collider collider)
     {
-        inSight = false;
+        inSightofSelf = false;
+        inSightofAny = false;
     }
 
 
 
-    void aggroState()
+    void whenInSight()
     {
-        if (inSight)
-        {
-            heatLevel = Mathf.Clamp(heatLevel + (50 * Time.deltaTime), 0,100);
-            updateAlertUIPos();
-        }
-        else
-        {
-            heatLevel = Mathf.Clamp(heatLevel - (50 * Time.deltaTime), 0, 100);
-        }
 
-        if (heatLevel > 0)
+
+        if (inSightofSelf)
         {
             sightLight.color = new Color(1.0f, 0.8f, 0); //orange.
-            gameObject.GetComponent<Renderer>().material = orangecone;
+            enemyBody.transform.rotation = Quaternion.LookRotation(PlayerPos.position - enemyBody.transform.position); //look in direction of noticed player
         }
         else
         {
             sightLight.color = new Color(0, 1.0f, 0.5f); //blue.
-            gameObject.GetComponent<Renderer>().material = bluecone;
         }
-
-        if (heatLevel >= 100 && playerHP.GameOver == false)
+        if (NPC_EnemyBehavior.attacking)
         {
             sightLight.color = new Color(1.0f, 0, 0); //red.
-            gameObject.GetComponent<Renderer>().material = redcone;
-            playerHP.takeDamage(1);
         }
 
-    }
-
-    //updates the position of the on-screen display showing the enemy's detection level
-    void updateAlertUIPos()
-    {
 
     }
 

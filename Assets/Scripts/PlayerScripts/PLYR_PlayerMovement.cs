@@ -36,8 +36,8 @@ public class PLYR_PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z + transform.up * -gravity;
         controller.Move(move * speed * Time.deltaTime);
 
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.timeScale;// removed deltatime bacuse lag spikes would cause the camera to jolt really badly, timescale still lets the camera be frozen when game is paused
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity* Time.timeScale;
 
         if (Input.GetKeyDown("left ctrl"))
         {
