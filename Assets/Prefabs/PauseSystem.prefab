@@ -2060,7 +2060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 5313130790327329655}
   pauseTransition: {fileID: 3356708917845853636}
-  animationTime: 2
+  animationTime: 1
 --- !u!1 &8401266909547967143
 GameObject:
   m_ObjectHideFlags: 0
