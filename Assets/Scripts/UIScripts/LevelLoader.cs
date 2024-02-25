@@ -10,6 +10,12 @@ public class LevelLoader : MonoBehaviour
     public float transitionTime = 1f;
 
     private int exitNumber = 42;
+
+    // Used to make the game always be unpaused on main menu screen loading, to prevent pause errors -Liz
+    void Awake()
+    {
+        PauseMenu.isPaused = false;
+    }
     
     // Scene Changer only for now, will need to update when adding extra mode (unless we can solve that so we don't have to go to another scene, but I digress) -Liz
 
@@ -23,12 +29,13 @@ public class LevelLoader : MonoBehaviour
     {
         transition.SetTrigger("Start");
 
+        // This needs to be WFSRealtime, otherwise you can't reset to timeScale 1 - Liz
+        yield return new WaitForSecondsRealtime(transitionTime);
+
         if (Time.timeScale == 0.0f) 
         {
             Time.timeScale = 1f;
         }
-
-        yield return new WaitForSeconds(transitionTime);
 
         if (levelIndex == exitNumber) 
         {
@@ -40,19 +47,8 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    /*IEnumerator StartExitGame()
-    {
-        transition.SetTrigger("Start");
-
-        yield return new WaitForSeconds(transitionTime);
-
-        Debug.Log("Game exited, quitting out now...");
-        Application.Quit();
-    }*/
-
     public void ExitGame()
     {
-        //StartCoroutine(StartExitGame());
         StartCoroutine(LoadLevel(exitNumber));
     }
 

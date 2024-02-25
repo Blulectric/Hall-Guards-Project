@@ -10,9 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     public Animator pauseTransition;
 
-    public float animationTime = 2f;
-
-    // Sets pause to always be false on game start
+    public float animationTime = 1f;
 
     // Update is called once per frame
     void Update()
@@ -31,19 +29,12 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        Debug.Log("Resuming game...");
-
+        // Coroutine for animation purposes ^w^ -Liz
         StartCoroutine(UnpauseGame());
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1f;
-        isPaused = false;
     }
 
     void Pause()
     {
-        Debug.Log("Pausing game...");
-
         Cursor.lockState = CursorLockMode.None;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
@@ -55,8 +46,11 @@ public class PauseMenu : MonoBehaviour
         // Trigger animation
         pauseTransition.SetTrigger("Unpaused");
         // Wait for animation to finish
-        yield return new WaitForSeconds(animationTime);
+        yield return new WaitForSecondsRealtime(animationTime);
         // Do stuff
+        Cursor.lockState = CursorLockMode.Locked;
         pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 }
