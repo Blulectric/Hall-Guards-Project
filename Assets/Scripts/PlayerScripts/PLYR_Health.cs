@@ -8,6 +8,8 @@ public class PLYR_Health : MonoBehaviour
     public int HP = 100;
     public GameObject gameOverPanel;
 
+    public GameObject hitScreenRed;
+
     public static bool GameOver = false;
 
     // Start is called before the first frame update
@@ -27,9 +29,23 @@ public class PLYR_Health : MonoBehaviour
         HP = Mathf.Clamp(HP - (damage), 0, 100);
         if (HP <= 0)
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             gameOverPanel.SetActive(true);
-            GameOver = true;
+            // GameOver = true;
         }
+
+        StartCoroutine(ExampleCoroutine());
+
     }
+
+    IEnumerator ExampleCoroutine()
+    {
+        hitScreenRed.SetActive(true);
+
+        yield return new WaitForSeconds(0.25f);
+
+        hitScreenRed.SetActive(false);
+
+    }
+
 }

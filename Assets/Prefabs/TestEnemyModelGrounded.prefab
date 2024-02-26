@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4075742457660894139}
   - component: {fileID: 4913783480460937632}
   - component: {fileID: 5753115566287065426}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5223417545832394261}
   - component: {fileID: 8187968685752841382}
   - component: {fileID: 8140838654162557139}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: EnemySightCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,6 @@ MonoBehaviour:
   sightOrigin: {fileID: 632640982326539486}
   sightLight: {fileID: 3386073926385551841}
   inSightofSelf: 0
-  playerHP: {fileID: 0}
 --- !u!23 &8140838654162557139
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -241,7 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 632640982326539486}
   - component: {fileID: 3386073926385551841}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: SightPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +337,7 @@ GameObject:
   - component: {fileID: 3058441360376925410}
   - component: {fileID: 8895396018556120521}
   - component: {fileID: 3063037383911917547}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +446,7 @@ GameObject:
   - component: {fileID: 1639882258759400120}
   - component: {fileID: 1811273012998689023}
   - component: {fileID: 8470318065603046676}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: TestEnemyModelGrounded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,10 +579,15 @@ MonoBehaviour:
   agent: {fileID: 1811273012998689023}
   sightScript: {fileID: 8187968685752841382}
   wanderDelay: 5
-  wanderRange: 10
   wanderRegion: {fileID: 0}
+  shootDelay: 2
+  bulletPrefab: {fileID: 0}
+  bulletSpawn: {fileID: 0}
+  startAttackFromRadius: 0
   returning: 0
   movementSpeed: 6
+  angularSpeed: 50
+  acceleration: 1
   stopDist: 8
   HP: 100
   myDropDown: 1

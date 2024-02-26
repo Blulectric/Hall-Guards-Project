@@ -18,6 +18,9 @@ public class PLYR_PlayerMovement : MonoBehaviour
 
     public bool crouching = false;
 
+    public int smokeBombs = 2;
+    public GameObject smokeBomb;
+
     private float t = 0;
 
     // Start is called before the first frame update
@@ -37,7 +40,7 @@ public class PLYR_PlayerMovement : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.timeScale;// removed deltatime bacuse lag spikes would cause the camera to jolt really badly, timescale still lets the camera be frozen when game is paused
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity* Time.timeScale;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.timeScale;
 
         if (Input.GetKeyDown("left ctrl"))
         {
@@ -53,11 +56,18 @@ public class PLYR_PlayerMovement : MonoBehaviour
 
             if (!hitsHead) // dont uncrouch if player would hit their head on something 
             {
-            crouching = !crouching;
-            t = 0;
+                crouching = !crouching;
+                t = 0;
             }
 
 
+        }
+
+        if (Input.GetKeyDown("left shift")&& smokeBombs >0)
+        {
+            smokeBombs -= 1;
+            Instantiate(smokeBomb, transform.position, transform.rotation);
+            //audioSource.PlayOneShot(smokebombExplode, 1.0f);
         }
 
         if (crouching)
@@ -78,12 +88,19 @@ public class PLYR_PlayerMovement : MonoBehaviour
         {
             // cast a ray when trying to exit a crouch to check if player will hit their head
             RaycastHit hit;
-            if (Physics.Raycast(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), out hit, 100f))
+            if (Physics.Raycast(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), out hit, 25f))
             {
-                Debug.DrawRay(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), Color.red);
-                Debug.Log(hit.transform.name+"shoot ray, though enemies are currently set to ignore raycast.. oops");
+
+                Debug.Log(hit.transform.name);
+                NPC_EnemyBehavior enemyscript = hit.transform.GetComponent<NPC_EnemyBehavior>();
+
+                if (enemyscript)
+                {
+                    enemyscript.HP = 0;
+                }
             }
         }
+
 
             ///////camera///////
             xRotation -= mouseY;
@@ -93,7 +110,7 @@ public class PLYR_PlayerMovement : MonoBehaviour
 
         transform.Rotate(Vector3.up * mouseX);
 
- 
+
 
     }
 }

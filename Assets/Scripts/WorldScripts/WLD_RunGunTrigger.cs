@@ -6,8 +6,11 @@ public class WLD_RunGunTrigger : MonoBehaviour
 {
 
     public GameObject RunGunUI;
+    //public GameObject RunGunCrosshairUI;
 
     private bool reached = false;
+
+    private GameObject Player;
 
     public static bool GENOCIDE = false; //will change enemy behaviors slightly maybe
 
@@ -15,12 +18,13 @@ public class WLD_RunGunTrigger : MonoBehaviour
     void Start()
     {
         GENOCIDE = false;
+        Player = GameObject.Find("FPS Player");
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GENOCIDE == false)
+        if (GENOCIDE == false && other.gameObject == Player)
         {
             reached = true;
             RunGunUI.SetActive(true);
@@ -31,11 +35,14 @@ public class WLD_RunGunTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( Input.GetMouseButtonDown(0) && reached == true )
+        if (Input.GetMouseButtonDown(0) && reached == true && GENOCIDE == false)
         {
+            Player.transform.localRotation = Quaternion.Euler(0, 180, 0);
             GENOCIDE = true;
             RunGunUI.SetActive(false);
+            //RunGunCrosshairUI.SetActive(true);
             Time.timeScale = 1f;
+
         }
 
         if (GENOCIDE == true)
