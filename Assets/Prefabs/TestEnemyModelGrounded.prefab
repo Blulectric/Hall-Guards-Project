@@ -189,6 +189,7 @@ MonoBehaviour:
   sightLight: {fileID: 3386073926385551841}
   inSightofSelf: 0
   playerHP: {fileID: 0}
+  modes: {fileID: 11400000, guid: 69f682e4937053a4985f8f999177eb87, type: 2}
 --- !u!23 &8140838654162557139
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -580,11 +581,13 @@ MonoBehaviour:
   agent: {fileID: 1811273012998689023}
   sightScript: {fileID: 8187968685752841382}
   wanderDelay: 5
-  wanderRange: 10
   wanderRegion: {fileID: 0}
   returning: 0
   movementSpeed: 6
+  angularSpeed: 50
+  acceleration: 1
   stopDist: 8
   HP: 100
+  modes: {fileID: 11400000, guid: 69f682e4937053a4985f8f999177eb87, type: 2}
   myDropDown: 1
   explosionParticleBurst: {fileID: 0}

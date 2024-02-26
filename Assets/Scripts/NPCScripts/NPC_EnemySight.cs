@@ -22,6 +22,9 @@ public class NPC_EnemySight : MonoBehaviour
 
     public PLYR_Health playerHP;
 
+    [SerializeField]
+    private ModeSelector modes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +37,14 @@ public class NPC_EnemySight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         whenInSight();
+
+        if (modes.invisMode)
+        {
+            heatLevel = Mathf.Clamp(heatLevel - (10 * Time.deltaTime), 0, 100);
+            inSightofSelf = false;
+            inSightofAny = false;
+        }
 
     }
 
@@ -49,15 +58,18 @@ public class NPC_EnemySight : MonoBehaviour
         Vector3 direction = (collisionPoint - sightOrigin.position).normalized;
 
         RaycastHit hit;
-        if (Physics.Raycast(sightOrigin.position, direction, out hit, Mathf.Infinity) && hit.transform.gameObject.tag == "Player")
+        if (!modes.invisMode) 
         {
-            inSightofSelf = true;
-            inSightofAny = true;
-        }
-        else
-        {
-            inSightofSelf = false;
-            inSightofAny = false;
+            if (Physics.Raycast(sightOrigin.position, direction, out hit, Mathf.Infinity) && hit.transform.gameObject.tag == "Player")
+            {
+                inSightofSelf = true;
+                inSightofAny = true;
+            }
+            else
+            {
+                inSightofSelf = false;
+                inSightofAny = false;
+            }
         }
 
     }
