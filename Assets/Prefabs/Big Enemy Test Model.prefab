@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3814378613847761796}
   - component: {fileID: 4966578737763211720}
   - component: {fileID: 786980095657364192}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722388088800344146}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7063772, y: -0, z: -0, w: 0.7078357}
+  m_LocalRotation: {x: 0.70612067, y: -0.019748375, z: 0.019788053, w: 0.7075394}
   m_LocalPosition: {x: 0.381, y: 0.138, z: 0.324}
   m_LocalScale: {x: 0.23633, y: 0.32937312, z: 0.23633}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4757569230044248970}
-  m_LocalEulerAnglesHint: {x: 89.885, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.885, y: 0, z: 3.204}
 --- !u!33 &3814378613847761796
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 6192306606048317007}
   - component: {fileID: 2500188499366595502}
   - component: {fileID: 4499756511901064131}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 3833476041254830970}
   - component: {fileID: 8481038998612576171}
   - component: {fileID: 5397378692146946471}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Big Enemy Test Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1919864423563416394}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 2
+  m_Radius: 0.4
   m_Speed: 0
   m_Acceleration: 150
   avoidancePriority: 50
@@ -340,8 +340,12 @@ MonoBehaviour:
   sightScript: {fileID: 0}
   wanderDelay: 5
   wanderRegion: {fileID: 0}
+  shootDelay: 2
+  bulletPrefab: {fileID: 4292583277879488606, guid: 2be9fe6c73bcd8f49aad5561009a6553, type: 3}
+  bulletSpawn: {fileID: 722388088800344146}
+  startAttackFromRadius: 0
   returning: 0
-  movementSpeed: 24
+  movementSpeed: 32
   angularSpeed: 50
   acceleration: 1
   stopDist: 0
@@ -359,7 +363,7 @@ GameObject:
   - component: {fileID: 4771911398323752437}
   - component: {fileID: 3775874342636377924}
   - component: {fileID: 435075521110819312}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

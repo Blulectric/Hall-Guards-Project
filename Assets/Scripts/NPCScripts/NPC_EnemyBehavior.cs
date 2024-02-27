@@ -9,6 +9,7 @@ public class NPC_EnemyBehavior : MonoBehaviour
     private Camera cam;
     public NavMeshAgent agent;
 
+
     public NPC_EnemySight sightScript;
 
     private Vector3 HomePosition;
@@ -17,13 +18,22 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
     private Vector3 destination;
 
-    private Transform PlayerPos;
+    private GameObject Player;
+
+    private PLYR_Health playerHP;
 
     public float wanderDelay = 5f;
-
     private float wanderTimer = 0f;
 
     public GameObject wanderRegion;
+
+    public float shootDelay = 2f;
+    private float shootTimer = 0f;
+    public GameObject bulletPrefab;
+    public GameObject bulletSpawn;
+
+    public float startAttackFromRadius = 0f;
+    private bool attackRadiCheck = false;
 
     public bool returning = false;
 
@@ -59,7 +69,8 @@ public class NPC_EnemyBehavior : MonoBehaviour
         agent.stoppingDistance = stopDist;
 
         wanderTimer = wanderDelay;
-        PlayerPos = GameObject.Find("FPS Player").transform;
+        Player = GameObject.Find("FPS Player");
+        playerHP = Player.GetComponent<PLYR_Health>();
         HomePosition = transform.position;
         HomeAngle = transform.localRotation;
         cam = Camera.main;
@@ -107,9 +118,9 @@ public class NPC_EnemyBehavior : MonoBehaviour
             agent.acceleration = 500;
             agent.stoppingDistance = 8f;
 
-            destination = HomePosition; 
-            agent.SetDestination(PlayerPos.position);
-            transform.rotation = Quaternion.LookRotation(PlayerPos.position - transform.position);
+            destination = HomePosition;
+            agent.SetDestination(Player.transform.position);
+            transform.rotation = Quaternion.LookRotation(Player.transform.position - transform.position);
 
             returning = true; //just a var to check when the thing returns home from a chase
 
@@ -143,22 +154,64 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (myDropDown == MyEnum.BigBad)
+        {
+            if (WLD_RunGunTrigger.GENOCIDE == false && attacking)
+            {
+                playerHP.takeDamage(100);
+            }
+            //else if (WLD_RunGunTrigger.GENOCIDE == true)
+            //{
 
+            //}
+
+
+        }
+    }
 
     void BigBadEnemyAI()
     {
 
+
+
+
+        //
         if (WLD_RunGunTrigger.GENOCIDE == true)
         {
-            agent.stoppingDistance = 24f;
+            agent.stoppingDistance = 20f;
+            //radius = 3f;
+            shootTimer += Time.deltaTime;
+            if (shootTimer >= shootDelay)
+            {
+                shootTimer = 0f;
+                GameObject bullet;
+                bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation) as GameObject;
+                bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.transform.up * 30, ForceMode.VelocityChange);
+            }
         }
-
         if (attacking)
         {
 
-           // agent.speed = 12f; //gotta go fast   
-            agent.SetDestination(PlayerPos.position);
-            transform.rotation = Quaternion.LookRotation(PlayerPos.position - transform.position);
+            if (startAttackFromRadius != 0) // some enemies later on will only activate on radius, if the startAttackFromRadius is set manually it will activate them based on startAttackFromRadius distance
+            {
+                if ((transform.position - Player.transform.position).magnitude < startAttackFromRadius)
+                {
+                    attackRadiCheck = true;
+                }
+            }
+            else
+            {
+                attackRadiCheck = true;
+            }
+
+            if (attackRadiCheck == true)
+            {
+                agent.SetDestination(Player.transform.position);
+                transform.rotation = Quaternion.LookRotation(Player.transform.position - transform.position);
+            }
+
         }
         else //these guys return to their home when not attacking(asleep)
         {
@@ -179,7 +232,7 @@ public class NPC_EnemyBehavior : MonoBehaviour
     void wanderFunction()
     {
         if (wanderRegion == null) { Debug.LogError("forgot to set a wander region for" + transform.name); }
-        
+
 
         if (wanderTimer >= wanderDelay)
         {
@@ -194,7 +247,7 @@ public class NPC_EnemyBehavior : MonoBehaviour
             agent.SetDestination(destination);
         }
 
-        if ((transform.position - destination).magnitude < stopDist+1f)
+        if ((transform.position - destination).magnitude < stopDist + 1f)
         {
             wanderTimer += Time.deltaTime; //start timer when at destination
         }

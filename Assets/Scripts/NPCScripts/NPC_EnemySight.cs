@@ -37,6 +37,7 @@ public class NPC_EnemySight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         whenInSight();
 
         if (modes.invisMode)
@@ -57,13 +58,20 @@ public class NPC_EnemySight : MonoBehaviour
         var collisionPoint = collider.ClosestPoint(transform.position);
         Vector3 direction = (collisionPoint - sightOrigin.position).normalized;
 
+        int grnd = 1 << 0;
+        int fly = 1 << 3;
+        int mask = grnd | fly;
+
         RaycastHit hit;
-        if (!modes.invisMode) 
+
+        if (!modes.invisMode)
         {
-            if (Physics.Raycast(sightOrigin.position, direction, out hit, Mathf.Infinity) && hit.transform.gameObject.tag == "Player")
+            if (Physics.Raycast(sightOrigin.position, direction, out hit, 30f, mask) && hit.transform.gameObject.tag == "Player")
             {
+
                 inSightofSelf = true;
                 inSightofAny = true;
+
             }
             else
             {
@@ -108,4 +116,5 @@ public class NPC_EnemySight : MonoBehaviour
     }
 
 }
+
 
