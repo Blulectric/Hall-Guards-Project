@@ -350,6 +350,7 @@ MonoBehaviour:
   acceleration: 1
   stopDist: 0
   HP: 100
+  modes: {fileID: 11400000, guid: 69f682e4937053a4985f8f999177eb87, type: 2}
   myDropDown: 2
   explosionParticleBurst: {fileID: 0}
 --- !u!1 &7255459487587818912

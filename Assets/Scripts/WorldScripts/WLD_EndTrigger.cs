@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class WLD_EndTrigger : MonoBehaviour
 {
-
     private GameObject Player;
 
+    public static bool WinGame = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,9 @@ public class WLD_EndTrigger : MonoBehaviour
         if (other.gameObject == Player)
         {
             Debug.Log("Game end!");
-            Time.timeScale = 0f;
+
+            WinGame = true;
+            //Time.timeScale = 0f;
         }
     }
 

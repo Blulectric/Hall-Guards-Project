@@ -6,7 +6,7 @@ public class PLYR_Health : MonoBehaviour
 {
 
     public int HP = 100;
-    public GameObject gameOverPanel;
+    //public GameObject gameOverPanel;
 
     public GameObject hitScreenRed;
 
@@ -29,9 +29,10 @@ public class PLYR_Health : MonoBehaviour
         HP = Mathf.Clamp(HP - (damage), 0, 100);
         if (HP <= 0)
         {
+            // Disabled because I plan to set these for all game overs - Liz
             //Time.timeScale = 0f;
-            gameOverPanel.SetActive(true);
-            // GameOver = true;
+            //gameOverPanel.SetActive(true);
+            GameOver = true;
         }
 
         StartCoroutine(ExampleCoroutine());

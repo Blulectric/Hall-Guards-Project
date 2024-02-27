@@ -13,7 +13,7 @@ public class FacilityLights : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (NPC_EnemyBehavior.attacking == true)
+        if (NPC_EnemyBehavior.attacking == true || WLD_RunGunTrigger.GENOCIDE)
         {
             gameObject.GetComponent<Light>().color = new Color(1.0f, 0, 0); //red
         }

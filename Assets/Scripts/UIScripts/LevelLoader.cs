@@ -56,4 +56,9 @@ public class LevelLoader : MonoBehaviour
     {   
         StartCoroutine(LoadLevel(0));
     }
+
+    public void RetryLevel()
+    {
+        StartCoroutine(LoadLevel(1));
+    }
 }

@@ -47,6 +47,9 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
     public int HP = 100;
 
+    [SerializeField]
+    private ModeSelector modes;
+
 
     public MyEnum myDropDown = new MyEnum();
 
@@ -173,43 +176,41 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
     void BigBadEnemyAI()
     {
-
-
-
-
-        //
-        if (WLD_RunGunTrigger.GENOCIDE == true)
+        if (!modes.invisMode)
         {
-            agent.stoppingDistance = 20f;
-            //radius = 3f;
-            shootTimer += Time.deltaTime;
-            if (shootTimer >= shootDelay)
+            if (WLD_RunGunTrigger.GENOCIDE == true)
             {
-                shootTimer = 0f;
-                GameObject bullet;
-                bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation) as GameObject;
-                bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.transform.up * 30, ForceMode.VelocityChange);
+                agent.stoppingDistance = 20f;
+                //radius = 3f;
+                shootTimer += Time.deltaTime;
+                if (shootTimer >= shootDelay)
+                {
+                    shootTimer = 0f;
+                    GameObject bullet;
+                    bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation) as GameObject;
+                    bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.transform.up * 30, ForceMode.VelocityChange);
+                }
             }
-        }
-        if (attacking)
-        {
-
-            if (startAttackFromRadius != 0) // some enemies later on will only activate on radius, if the startAttackFromRadius is set manually it will activate them based on startAttackFromRadius distance
+            if (attacking)
             {
-                if ((transform.position - Player.transform.position).magnitude < startAttackFromRadius)
+
+                if (startAttackFromRadius != 0) // some enemies later on will only activate on radius, if the startAttackFromRadius is set manually it will activate them based on startAttackFromRadius distance
+                {
+                    if ((transform.position - Player.transform.position).magnitude < startAttackFromRadius)
+                    {
+                        attackRadiCheck = true;
+                    }
+                }
+                else
                 {
                     attackRadiCheck = true;
                 }
-            }
-            else
-            {
-                attackRadiCheck = true;
-            }
 
-            if (attackRadiCheck == true)
-            {
-                agent.SetDestination(Player.transform.position);
-                transform.rotation = Quaternion.LookRotation(Player.transform.position - transform.position);
+                if (attackRadiCheck == true)
+                {
+                    agent.SetDestination(Player.transform.position);
+                    transform.rotation = Quaternion.LookRotation(Player.transform.position - transform.position);
+                }
             }
 
         }

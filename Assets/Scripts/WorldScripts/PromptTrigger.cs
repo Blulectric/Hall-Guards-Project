@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PromptTrigger : MonoBehaviour
 {
 
     private GameObject Player;
 
-    public GameObject activeCanvas;
+    public GameObject uiCanvas;
+    public TextMeshProUGUI promptText;
 
-    public GameObject promptUIPrefab;
+    public Image progressMeter;
+
+    //public GameObject promptUIPrefab;
     public string EpromptText;
     public string EpromptTextActive;
     public KeyCode activationButton;
@@ -24,6 +29,7 @@ public class PromptTrigger : MonoBehaviour
 
     private bool buttonHeld = false;
 
+    [SerializeField]
     private GameObject prompt;
 
     // Start is called before the first frame update
@@ -41,15 +47,30 @@ public class PromptTrigger : MonoBehaviour
         {
             buttonHeld = true;
 
-            if (prompt != null){prompt.transform.Find("Background/PromptText").GetComponent<TMPro.TextMeshProUGUI>().text = EpromptTextActive;}
+            if (prompt != null)
+            {
+                promptText.text = EpromptTextActive;
+                //Debug.Log($"Current EpromptActive: {EpromptTextActive}");
+            }
         }
         if (Input.GetKeyUp(activationButton))
         {
-            if (!RememberProgress) { currentHoldTime = 0; if (prompt != null) { prompt.transform.Find("Background/PromptText").GetComponent<TMPro.TextMeshProUGUI>().text = EpromptText; } }
+            if (!RememberProgress) 
+            {   
+                currentHoldTime = 0; 
+
+                if (prompt != null) 
+                { 
+                    promptText.text = EpromptText; 
+                }
+            }
 
             if (prompt != null)
             {
-                if (!RememberProgress) { prompt.GetComponent<UnityEngine.UI.Image>().fillAmount = 0; }
+                if (!RememberProgress) 
+                { 
+                    progressMeter.fillAmount = 0; 
+                }
             }
 
             buttonHeld = false;
@@ -59,7 +80,7 @@ public class PromptTrigger : MonoBehaviour
 
     }
 
-private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
 
         if (other.gameObject == Player && buttonHeld)
@@ -70,7 +91,7 @@ private void OnTriggerStay(Collider other)
                 completed = true; // other script should listen for this value and do what's needed, script example comment set up at bottom for easy copy/paste 
                 if (prompt != null)
                 {
-                    Destroy(prompt);
+                    prompt.SetActive(false);
                 }
             }
             else
@@ -78,7 +99,7 @@ private void OnTriggerStay(Collider other)
 
                 if (prompt != null)
                 {
-                    prompt.GetComponent<UnityEngine.UI.Image>().fillAmount = currentHoldTime / holdTime;
+                    progressMeter.fillAmount = currentHoldTime / holdTime;
                 }
 
             }
@@ -90,9 +111,9 @@ private void OnTriggerStay(Collider other)
     {
         if (other.gameObject == Player && completed == false)
         {
-            prompt = Instantiate(promptUIPrefab, activeCanvas.transform);
-            prompt.transform.Find("Background/PromptText").GetComponent<TMPro.TextMeshProUGUI>().text = EpromptText;
-            prompt.transform.parent = activeCanvas.transform;
+            prompt.SetActive(true);
+            promptText.text = EpromptText;
+            Debug.Log($"Current Static Prompt: {EpromptText}, Current Active Prompt: {EpromptTextActive}");
         }
     }
 
@@ -102,9 +123,12 @@ private void OnTriggerStay(Collider other)
         {
             if (prompt != null)
             {
-                Destroy(prompt);
+                prompt.SetActive(false);
             }
-            if (!RememberProgress) { currentHoldTime = 0; }
+            if (!RememberProgress) 
+            { 
+                currentHoldTime = 0; 
+            }
         }
     }
 

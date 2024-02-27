@@ -14,6 +14,9 @@ public class WLD_RunGunTrigger : MonoBehaviour
 
     public static bool GENOCIDE = false; //will change enemy behaviors slightly maybe
 
+    [SerializeField]
+    private ModeSelector modes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +48,7 @@ public class WLD_RunGunTrigger : MonoBehaviour
 
         }
 
-        if (GENOCIDE == true)
+        if (GENOCIDE == true && !modes.invisMode)
         {
             NPC_EnemySight.heatLevel = 100; //force enemies to always attack
         }
