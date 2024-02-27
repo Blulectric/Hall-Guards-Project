@@ -188,6 +188,8 @@ MonoBehaviour:
   sightOrigin: {fileID: 632640982326539486}
   sightLight: {fileID: 3386073926385551841}
   inSightofSelf: 0
+  playerHP: {fileID: 0}
+  modes: {fileID: 11400000, guid: 69f682e4937053a4985f8f999177eb87, type: 2}
 --- !u!23 &8140838654162557139
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -3,7 +3,12 @@ guid: 72e05b51cb7cb504eb7764ab28c11a14
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemyBody: {instanceID: 0}
+  - sightOrigin: {instanceID: 0}
+  - sightLight: {instanceID: 0}
+  - playerHP: {instanceID: 0}
+  - modes: {fileID: 11400000, guid: 69f682e4937053a4985f8f999177eb87, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
