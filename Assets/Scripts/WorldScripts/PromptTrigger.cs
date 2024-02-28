@@ -50,7 +50,7 @@ public class PromptTrigger : MonoBehaviour
             if (prompt != null)
             {
                 promptText.text = EpromptTextActive;
-                //Debug.Log($"Current EpromptActive: {EpromptTextActive}");
+                Debug.Log($"Current EpromptActive: {EpromptTextActive}");
             }
         }
         if (Input.GetKeyUp(activationButton))
