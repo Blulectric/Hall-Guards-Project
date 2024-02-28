@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 //script located in canvas > UIPanel > Bar > SlidingArea > ProgressBar
 public class UI_heatLevelBar : MonoBehaviour
@@ -15,10 +14,6 @@ public class UI_heatLevelBar : MonoBehaviour
     public Color above25;
     public Color above50;
     public Color above75;
-
-    public TextMeshProUGUI SmokeGrenadeText;
-
-    public PLYR_PlayerMovement player;
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +78,5 @@ public class UI_heatLevelBar : MonoBehaviour
 
         alertIcon.SetActive(NPC_EnemySight.inSightofAny);
 
-        SmokeGrenadeText.text = $"{player.smokeBombs}";
     }
 }
