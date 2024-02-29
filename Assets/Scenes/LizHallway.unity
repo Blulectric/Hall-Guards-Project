@@ -8244,7 +8244,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
   - name: Open Menu
-    clip: {fileID: 8300000, guid: 82e13dc5cb9bf8a49b255b48edde4a12, type: 3}
+    clip: {fileID: 8300000, guid: 04e4c0cdba652f34c9835da5a4bbb57f, type: 3}
     volume: 0.7
     pitch: 1
     loop: 0
