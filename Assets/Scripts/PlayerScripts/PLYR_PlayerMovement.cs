@@ -20,6 +20,7 @@ public class PLYR_PlayerMovement : MonoBehaviour
 
     public int smokeBombs = 2;
     public GameObject smokeBomb;
+    
 
     private float t = 0;
 
@@ -67,7 +68,7 @@ public class PLYR_PlayerMovement : MonoBehaviour
         {
             smokeBombs -= 1;
             Instantiate(smokeBomb, transform.position, transform.rotation);
-            //audioSource.PlayOneShot(smokebombExplode, 1.0f);
+            //AudioManager.Instance.PlaySFX("Smoke Bomb");
         }
 
         if (crouching)
@@ -100,9 +101,9 @@ public class PLYR_PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (GameOverScript.canPause && !PauseMenu.isPaused)
+            if(!PauseMenu.isPaused && GameOverScript.canPause)
             {
-                FindObjectOfType<AudioManager>().Play("Ray Gun");
+                AudioManager.Instance.PlaySFX("Ray Gun");
             }
         }
 

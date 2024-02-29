@@ -9,6 +9,8 @@ public class UI_heatLevelBar : MonoBehaviour
 {
     public GameObject alertIcon;
 
+    private bool AllowAudio;
+
     public GameObject heatBar;
     public Image heatBarFill;
 
@@ -44,6 +46,10 @@ public class UI_heatLevelBar : MonoBehaviour
         if (NPC_EnemySight.heatLevel >= 100 && PLYR_Health.GameOver == false)
         {
             NPC_EnemyBehavior.attacking = true;
+            if (AllowAudio && !WLD_RunGunTrigger.GENOCIDE)
+            {
+                AlertSound();
+            }
         }
 
         //get the clamped value for the heat bar
@@ -61,6 +67,7 @@ public class UI_heatLevelBar : MonoBehaviour
         if (NPC_EnemySight.heatLevel == 0)
         {
             heatBar.SetActive(false);
+            AllowAudio = true;
         } else 
         {
             heatBar.SetActive(true);
@@ -83,6 +90,17 @@ public class UI_heatLevelBar : MonoBehaviour
 
         alertIcon.SetActive(NPC_EnemySight.inSightofAny);
 
+        if (WLD_RunGunTrigger.GENOCIDE) 
+        {
+            heatBar.SetActive(false);
+        }
+
         SmokeGrenadeText.text = $"{player.smokeBombs}";
+    }
+
+    private void AlertSound()
+    {
+        AllowAudio = false;
+        AudioManager.Instance.PlaySFX("AlertSFX");
     }
 }

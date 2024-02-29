@@ -10,6 +10,9 @@ public class PLYR_Health : MonoBehaviour
 
     public GameObject hitScreenRed;
 
+    [SerializeField]
+    private GameOverScript goScript;
+
     public static bool GameOver = false;
 
     // Start is called before the first frame update
@@ -32,7 +35,7 @@ public class PLYR_Health : MonoBehaviour
             // Disabled because I plan to set these for all game overs - Liz
             //Time.timeScale = 0f;
             //gameOverPanel.SetActive(true);
-            GameOver = true;
+            goScript.EndGame(false);
         }
 
         StartCoroutine(ExampleCoroutine());

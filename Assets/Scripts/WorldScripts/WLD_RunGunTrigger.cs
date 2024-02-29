@@ -44,10 +44,8 @@ public class WLD_RunGunTrigger : MonoBehaviour
             GENOCIDE = true;
             RunGunUI.SetActive(false);
             //RunGunCrosshairUI.SetActive(true);
-            FindObjectOfType<AudioManager> ().StopPlaying ("Stealth Music");
-            FindObjectOfType<AudioManager>().Play("Run Music");
+            AudioManager.Instance.PlayMusic("Run Music");
             Time.timeScale = 1f;
-
         }
 
         if (GENOCIDE == true && !modes.invisMode)

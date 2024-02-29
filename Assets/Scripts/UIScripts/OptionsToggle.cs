@@ -7,9 +7,11 @@ public class OptionsToggle : MonoBehaviour
 {
     [SerializeField]
     private ModeSelector modes;
+    [SerializeField]
+    private AudioTracker audio;
 
-    public Toggle invisToggle;
-    public Toggle noLightToggle;
+    public Toggle invisToggle, noLightToggle;
+    public Slider musicSlider, sfxSlider;
 
     public void Start()
     {
@@ -32,5 +34,8 @@ public class OptionsToggle : MonoBehaviour
             noLightToggle.isOn = false;
             modes.noLightMode = false;
         }
+
+        musicSlider.value = audio.musicValue;
+        sfxSlider.value = audio.sfxValue;
     }
 }

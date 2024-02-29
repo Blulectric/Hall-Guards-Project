@@ -14,8 +14,7 @@ public class BulletScript : MonoBehaviour
         Player = GameObject.Find("FPS Player");
         playerHP = Player.GetComponent<PLYR_Health>();
         StartCoroutine(ExampleCoroutine());
-
-        FindObjectOfType<AudioManager>().Play("BulletSFX");
+        AudioManager.Instance.PlaySFX("Bullet");
     }
 
     IEnumerator ExampleCoroutine()

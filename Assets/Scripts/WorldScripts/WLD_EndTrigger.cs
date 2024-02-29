@@ -6,6 +6,9 @@ public class WLD_EndTrigger : MonoBehaviour
 {
     private GameObject Player;
 
+    [SerializeField]
+    private GameOverScript goScript;
+
     public static bool WinGame = false;
     // Start is called before the first frame update
     void Start()
@@ -19,8 +22,8 @@ public class WLD_EndTrigger : MonoBehaviour
         if (other.gameObject == Player)
         {
             Debug.Log("Game end!");
-
-            WinGame = true;
+            goScript.EndGame(true);
+            //WinGame = true;
             //Time.timeScale = 0f;
         }
     }

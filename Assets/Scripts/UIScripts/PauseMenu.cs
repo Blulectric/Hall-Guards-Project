@@ -37,6 +37,8 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        AudioManager.Instance.PlaySFX("Open Menu");
+
         Cursor.lockState = CursorLockMode.None;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
@@ -45,12 +47,13 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator UnpauseGame()
     {
+        AudioManager.Instance.PlaySFX("Close Menu");
+        Cursor.lockState = CursorLockMode.Locked;
         // Trigger animation
         pauseTransition.SetTrigger("Unpaused");
         // Wait for animation to finish
         yield return new WaitForSecondsRealtime(animationTime);
         // Do stuff
-        Cursor.lockState = CursorLockMode.Locked;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;

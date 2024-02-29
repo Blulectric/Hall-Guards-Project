@@ -29,6 +29,7 @@ public class CollectKeyCard : MonoBehaviour
         {
             triggered = true;
             //keycardDoorTrigger.transform.position = intendedPosition; //unbury the trigger and put it in front of the door
+            AudioManager.Instance.PlaySFX("PickupSFX");
             keycardDoorTrigger.SetActive(true);
             Destroy(gameObject);
         }

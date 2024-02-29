@@ -6,46 +6,61 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] sounds;
-    
-    void Awake()
+    public static AudioManager Instance;
+
+    public Sound[] musicSounds, sfxSounds;
+    public AudioSource musicSource, sfxSource;
+    //public AudioMixer musicMixer, sfxMixer;
+
+    private void Awake()
     {
-        foreach(Sound s in sounds)
+        if (Instance == null)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-
-            s.source.loop = s.loop;
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
+        } else 
+        {
+            Destroy(gameObject);
         }
     }
     
-    void Start()
+    private void Start()
     {
-        Play("Stealth Music");
+        PlayMusic("Stealth Music");
     }
 
-    public void Play(string name)
+    public void PlayMusic(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(musicSounds, sound => sound.name == name);
+
         if (s == null)
         {
-            Debug.LogWarning($"Sound {name} could not be found!");
+            Debug.LogWarning($"Sound {name} Not Found!");
             return;
+        } else
+        {
+            musicSource.clip = s.clip;
+            musicSource.loop = s.loop;
+            musicSource.volume = s.volume;
+            musicSource.Play();
+            Debug.Log("Music Clip Played!");
         }
-        s.source.Play();
     }
 
-    public void StopPlaying(string name)
+    public void PlaySFX(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sfxSounds, sound => sound.name == name);
+
         if (s == null)
         {
-            Debug.LogWarning($"Sound {name} could not be found!");
+            Debug.LogWarning($"Sound {name} Not Found!");
             return;
+        } else
+        {
+            sfxSource.clip = s.clip;
+            sfxSource.volume = s.volume;
+            sfxSource.Play();
+            Debug.Log("SFX Clip Played!");
         }
-        s.source.Stop();
     }
 }

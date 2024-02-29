@@ -6,7 +6,7 @@ AudioMixerController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MasterMix
+  m_Name: MusicMixer
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
@@ -14,13 +14,13 @@ AudioMixerController:
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ExposedParameters:
-  - guid: ca53d7fc28c93994da41133417b557b7
-    name: MasterVolume
+  - guid: a52668f2de076744b933e27f68cbaa9a
+    name: Volume
   m_AudioMixerGroupViews:
   - guids:
-    - bd50f327742751a4badc07019ca111a5
+    - e4f61950e82b9a84c9e2b70661a974d7
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -32,10 +32,10 @@ AudioMixerGroupController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Master
   m_AudioMixer: {fileID: 24100000}
-  m_GroupID: bd50f327742751a4badc07019ca111a5
+  m_GroupID: e4f61950e82b9a84c9e2b70661a974d7
   m_Children: []
-  m_Volume: ca53d7fc28c93994da41133417b557b7
-  m_Pitch: 67a46c20b76e14f49ba98f6f338aae29
+  m_Volume: a52668f2de076744b933e27f68cbaa9a
+  m_Pitch: a47b6659858feb0448f29d2ae008cc10
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
@@ -50,9 +50,9 @@ AudioMixerEffectController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_EffectID: 939682fdd1198d143baaf3251f05d7cb
+  m_EffectID: 9380c354db54762408fbfd2ffa910753
   m_EffectName: Attenuation
-  m_MixLevel: ea3303e53de53074897cfd976afc5ba8
+  m_MixLevel: c9588fd01f1ddcf439aca3c2877773c5
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -65,6 +65,7 @@ AudioMixerSnapshotController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: 623f51bc48c61d641952cf19420502b1
-  m_FloatValues: {}
+  m_SnapshotID: 4f34819871f6d4a48a1cfa78eb19a27e
+  m_FloatValues:
+    a52668f2de076744b933e27f68cbaa9a: 1.7
   m_TransitionOverrides: {}
