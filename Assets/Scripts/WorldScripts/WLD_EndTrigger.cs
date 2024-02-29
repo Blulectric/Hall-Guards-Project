@@ -10,6 +10,7 @@ public class WLD_EndTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        WinGame = false;
         Player = GameObject.Find("FPS Player");
     }
 

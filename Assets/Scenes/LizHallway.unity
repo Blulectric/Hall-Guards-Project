@@ -17202,7 +17202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28500,6 +28500,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040352484}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2051088613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051088615}
+  - component: {fileID: 2051088614}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2051088614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051088613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887f70cda5341e94abec520713601d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Stealth Music
+    clip: {fileID: 8300000, guid: 6f7a5fb40a09b6244b6c4e9bc0bd0319, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Run Music
+    clip: {fileID: 8300000, guid: 22aae0a972852e741ba086885c2e6a23, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Ray Gun
+    clip: {fileID: 8300000, guid: 3d1f0e5d1c9d3b04c91e1b27aea19ab4, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BulletSFX
+    clip: {fileID: 8300000, guid: 897a2496e613eda4aa0db16c1b8d4d81, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &2051088615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051088613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: 4.167, z: -51.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2051469605
 GameObject:
   m_ObjectHideFlags: 0
@@ -44233,30 +44302,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 189154505759349643, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552208771361853277, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 552208771361853277, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 552208771361853277, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 552208771361853277, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049992400737187943, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 16777215
-      objectReference: {fileID: 0}
     - target: {fileID: 1265284818866236374, guid: ab81823cec67976468194005bc408a94, type: 3}
       propertyPath: m_LocalPosition.x
       value: 550.5
@@ -44297,49 +44342,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2931377797488763150, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4905578183462836954, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4905578183462836954, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4905578183462836954, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5313130790327329655, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6211296828659111251, guid: ab81823cec67976468194005bc408a94, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1462077249}
-    - target: {fileID: 6848069129954101018, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7243141720620729297, guid: ab81823cec67976468194005bc408a94, type: 3}
       propertyPath: m_Name
       value: PauseSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 7243141720620729297, guid: ab81823cec67976468194005bc408a94, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7405699341039387437, guid: ab81823cec67976468194005bc408a94, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1462077249}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4725914445391318308, guid: ab81823cec67976468194005bc408a94, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab81823cec67976468194005bc408a94, type: 3}
@@ -53956,3 +53972,4 @@ SceneRoots:
   - {fileID: 1355607684}
   - {fileID: 4403505627647103608}
   - {fileID: 2002721960}
+  - {fileID: 2051088615}

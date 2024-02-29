@@ -20,6 +20,7 @@ public class GameOverScript : MonoBehaviour
     
     void Start()
     {
+        gameOverPanel.SetActive(false);
         canPause = true;
     }
 

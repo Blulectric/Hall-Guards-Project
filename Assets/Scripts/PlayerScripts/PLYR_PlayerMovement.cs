@@ -99,6 +99,11 @@ public class PLYR_PlayerMovement : MonoBehaviour
                     enemyscript.HP = 0;
                 }
             }
+
+            if (GameOverScript.canPause && !PauseMenu.isPaused)
+            {
+                FindObjectOfType<AudioManager>().Play("Ray Gun");
+            }
         }
 
 

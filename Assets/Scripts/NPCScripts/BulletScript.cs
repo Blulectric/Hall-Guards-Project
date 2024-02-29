@@ -13,8 +13,9 @@ public class BulletScript : MonoBehaviour
     {
         Player = GameObject.Find("FPS Player");
         playerHP = Player.GetComponent<PLYR_Health>();
-         StartCoroutine(ExampleCoroutine());
+        StartCoroutine(ExampleCoroutine());
 
+        FindObjectOfType<AudioManager>().Play("BulletSFX");
     }
 
     IEnumerator ExampleCoroutine()
@@ -22,7 +23,6 @@ public class BulletScript : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         Destroy(gameObject);
-
     }
 
 
