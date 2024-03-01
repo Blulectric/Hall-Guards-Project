@@ -8,10 +8,16 @@ public class AudioTracker : ScriptableObject
     [Range(0.0001f, 1f)]
     public float sfxValue, musicValue;
 
+    [Range(0.0001f, 1f)]
+    [SerializeField] private float startValue = 1f;
+
     public UnityEvent<float> trackerChangeEvent;
 
     private void OnEnable()
     {
+        sfxValue = startValue;
+        musicValue = startValue;
+
         if (trackerChangeEvent == null)
         {
             trackerChangeEvent = new UnityEvent<float>();
