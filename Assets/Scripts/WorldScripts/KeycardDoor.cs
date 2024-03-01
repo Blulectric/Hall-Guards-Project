@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KeycardDoor : MonoBehaviour
 {
+    public Animator vaultOpen;
 
     public Animation slidingDoorAnim;
 
@@ -20,6 +21,8 @@ public class KeycardDoor : MonoBehaviour
             //i'll play Azalee's door sliding animation here but idk if this even is the right code for it ;-;
             //animation["AnimationName"].wrapMode = WrapMode.Once;
             //animation.Play("AnimationName");
+            vaultOpen.SetTrigger("Open");
+
             Destroy(gameObject);
         }
     }

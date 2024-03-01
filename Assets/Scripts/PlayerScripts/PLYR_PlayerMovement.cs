@@ -5,6 +5,7 @@ using UnityEngine;
 public class PLYR_PlayerMovement : MonoBehaviour
 {
 
+    [Header("General Player Movement")]
     public CharacterController controller;
     public float maxSpeed = 12f;
     public float speed = 12f;
@@ -20,7 +21,8 @@ public class PLYR_PlayerMovement : MonoBehaviour
 
     public int smokeBombs = 2;
     public GameObject smokeBomb;
-    
+
+    public Animator vaultOpen;
 
     private float t = 0;
 
@@ -60,8 +62,6 @@ public class PLYR_PlayerMovement : MonoBehaviour
                 crouching = !crouching;
                 t = 0;
             }
-
-
         }
 
         if (Input.GetKeyDown("left shift")&& smokeBombs >0)
@@ -116,7 +116,6 @@ public class PLYR_PlayerMovement : MonoBehaviour
 
         transform.Rotate(Vector3.up * mouseX);
 
-
-
     }
+
 }

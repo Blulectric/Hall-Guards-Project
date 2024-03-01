@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class NPC_EnemyBehavior : MonoBehaviour
 {
-
+    //liz
     private Camera cam;
     public NavMeshAgent agent;
 
@@ -212,16 +212,16 @@ public class NPC_EnemyBehavior : MonoBehaviour
                     transform.rotation = Quaternion.LookRotation(Player.transform.position - transform.position);
                 }
             }
-
-        }
-        else //these guys return to their home when not attacking(asleep)
-        {
-            agent.SetDestination(HomePosition);
-
-            if ((transform.position - HomePosition).magnitude < 1)
+            else //these guys return to their home when not attacking(asleep)
             {
-                //reposition to sleeping angle
-                transform.localRotation = HomeAngle;
+                agent.SetDestination(HomePosition);
+
+                if ((transform.position - HomePosition).magnitude < 1)
+                {
+                    //reposition to sleeping angle
+                    transform.localRotation = HomeAngle;
+                }
+
             }
 
         }

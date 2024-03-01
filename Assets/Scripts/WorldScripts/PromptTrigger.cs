@@ -36,7 +36,6 @@ public class PromptTrigger : MonoBehaviour
     void Start()
     {
         Player = GameObject.Find("FPS Player");
-        //Debug.Log(promptUIPrefab.GetComponentInChildren<Background>());
     }
 
 
@@ -46,24 +45,9 @@ public class PromptTrigger : MonoBehaviour
         if (Input.GetKeyDown(activationButton))
         {
             buttonHeld = true;
-
-            if (prompt != null)
-            {
-                promptText.text = EpromptTextActive;
-                //Debug.Log($"Current EpromptActive: {EpromptTextActive}");
-            }
         }
         if (Input.GetKeyUp(activationButton))
         {
-            if (!RememberProgress) 
-            {   
-                currentHoldTime = 0; 
-
-                if (prompt != null) 
-                { 
-                    promptText.text = EpromptText; 
-                }
-            }
 
             if (prompt != null)
             {
@@ -85,6 +69,13 @@ public class PromptTrigger : MonoBehaviour
 
         if (other.gameObject == Player && buttonHeld)
         {
+
+            if (prompt != null)
+            {
+                promptText.text = EpromptTextActive;
+                //Debug.Log($"Current EpromptActive: {EpromptTextActive}");
+            }
+
             currentHoldTime += Time.deltaTime;
             if (currentHoldTime > holdTime)
             {
@@ -104,6 +95,18 @@ public class PromptTrigger : MonoBehaviour
 
             }
             
+        }
+        else if (other.gameObject == Player && !buttonHeld)
+        {
+            if (!RememberProgress)
+            {
+                currentHoldTime = 0;
+
+                if (prompt != null)
+                {
+                    promptText.text = EpromptText;
+                }
+            }
         }
     }
 
