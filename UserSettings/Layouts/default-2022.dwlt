@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 100
+  controlID: 113
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 59
+  controlID: 60
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 60
+  controlID: 61
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -682,7 +682,7 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Mesh
+    - Assets
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -690,7 +690,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Mesh
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Liz\Downloads\School Work\2024\Game Production\Project
     2\WORLDGRABBER\Hall-Guards-Project
@@ -698,9 +698,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 127}
-    m_SelectedIDs: ec770000
-    m_LastClickedID: 30700
-    m_ExpandedIDs: 00000000e8770000ea770000ec770000ee770000f0770000f277000000ca9a3b
+    m_SelectedIDs: 0a7b0000
+    m_LastClickedID: 31498
+    m_ExpandedIDs: 000000000a7b00000c7b00000e7b0000107b0000127b0000147b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -728,7 +728,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e8770000ea770000ec770000ee770000f0770000f2770000
+    m_ExpandedIDs: 000000000a7b00000c7b00000e7b0000107b0000127b0000147b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -867,10 +867,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 1044}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 32fbffff9a5d00007e5f000076610000f26500009a680000a86800002e6d0000a46f0000
+      scrollPos: {x: 0, y: 564}
+      m_SelectedIDs: 9c690000
+      m_LastClickedID: 27036
+      m_ExpandedIDs: d8f4ffffe85e0000d85f00000c610000d4610000f66200001e6a0000286c0000426c00006a6c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1302,9 +1302,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 38.95713, y: 21.179771, z: 245.06148}
+    m_Target: {x: -25.499996, y: 6.500014, z: 193}
     speed: 2
-    m_Value: {x: 38.95713, y: 21.179771, z: 245.06148}
+    m_Value: {x: -25.499996, y: 6.500014, z: 193}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1329,7 +1329,7 @@ MonoBehaviour:
         m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 0.5, y: 0.5}
+      m_Size: {x: 0.25, y: 0.25}
     yGrid:
       m_Fade:
         m_Target: 0
@@ -1350,13 +1350,13 @@ MonoBehaviour:
     m_GridAxis: 0
     m_gridOpacity: 1
   m_Rotation:
-    m_Target: {x: 0.30529615, y: 0.61914533, z: -0.2829363, w: 0.66588324}
+    m_Target: {x: -0.12932307, y: -0.50202984, z: 0.075495206, w: -0.8517803}
     speed: 2
-    m_Value: {x: 0.30487138, y: 0.6201434, z: -0.2833939, w: 0.6649537}
+    m_Value: {x: -0.1282697, y: -0.49958742, z: 0.07435808, w: -0.85348123}
   m_Size:
-    m_Target: 162.92189
+    m_Target: 47.061726
     speed: 2
-    m_Value: 162.92189
+    m_Value: 45.035145
   m_Ortho:
     m_Target: 0
     speed: 2

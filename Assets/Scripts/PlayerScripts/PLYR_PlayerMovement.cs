@@ -89,9 +89,9 @@ public class PLYR_PlayerMovement : MonoBehaviour
         {
             // cast a ray when trying to exit a crouch to check if player will hit their head
             RaycastHit hit;
-            if (Physics.Raycast(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), out hit, 25f))
+            if (Physics.Raycast(playerCamera.position, playerCamera.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
             {
-
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 Debug.Log(hit.transform.name);
                 NPC_EnemyBehavior enemyscript = hit.transform.GetComponent<NPC_EnemyBehavior>();
 

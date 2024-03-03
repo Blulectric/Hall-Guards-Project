@@ -9,7 +9,6 @@ public class NPC_EnemyBehavior : MonoBehaviour
     private Camera cam;
     public NavMeshAgent agent;
 
-
     public NPC_EnemySight sightScript;
 
     private Vector3 HomePosition;
@@ -50,6 +49,8 @@ public class NPC_EnemyBehavior : MonoBehaviour
     [SerializeField]
     private ModeSelector modes;
 
+    private Animator animator;
+
 
     public MyEnum myDropDown = new MyEnum();
 
@@ -77,6 +78,8 @@ public class NPC_EnemyBehavior : MonoBehaviour
         HomePosition = transform.position;
         HomeAngle = transform.localRotation;
         cam = Camera.main;
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -185,10 +188,13 @@ public class NPC_EnemyBehavior : MonoBehaviour
                 shootTimer += Time.deltaTime;
                 if (shootTimer >= shootDelay)
                 {
-                    shootTimer = 0f;
-                    GameObject bullet;
-                    bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation) as GameObject;
-                    bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.transform.up * 30, ForceMode.VelocityChange);
+                    if((transform.position - Player.transform.position).magnitude < startAttackFromRadius)
+                    {
+                        shootTimer = 0f;
+                        GameObject bullet;
+                        bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation) as GameObject;
+                        bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.transform.up * 30, ForceMode.VelocityChange);
+                    }
                 }
             }
             if (attacking)
@@ -208,12 +214,19 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
                 if (attackRadiCheck == true)
                 {
+                    animator.SetBool("isRunning", true);
                     agent.SetDestination(Player.transform.position);
                     transform.rotation = Quaternion.LookRotation(Player.transform.position - transform.position);
+                } else 
+                {
+                    animator.SetBool("isRunning", false);
                 }
             }
             else //these guys return to their home when not attacking(asleep)
             {
+                
+                animator.SetBool("isRunning", false);
+
                 agent.SetDestination(HomePosition);
 
                 if ((transform.position - HomePosition).magnitude < 1)

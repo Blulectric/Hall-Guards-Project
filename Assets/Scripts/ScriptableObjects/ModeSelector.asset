@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invisMode: 1
   noLightMode: 1
+  startInvis: 0
+  startNoLight: 0
   modeChangeEvent:
     m_PersistentCalls:
       m_Calls: []

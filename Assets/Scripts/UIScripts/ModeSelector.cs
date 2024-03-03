@@ -8,12 +8,15 @@ public class ModeSelector : ScriptableObject
     public bool invisMode;
     public bool noLightMode;
 
+    [SerializeField] private bool startInvis;
+    [SerializeField] private bool startNoLight;
+
     public UnityEvent<bool> modeChangeEvent;
 
     private void OnEnable()
     {
-        invisMode = false;
-        noLightMode = false;
+        invisMode = startInvis;
+        noLightMode = startNoLight;
 
         if (modeChangeEvent == null)
         {

@@ -25,7 +25,14 @@ public class KeycardDoor : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            vaultOpen.SetTrigger("Open");
+        }
     }
+
+
 
 
 
