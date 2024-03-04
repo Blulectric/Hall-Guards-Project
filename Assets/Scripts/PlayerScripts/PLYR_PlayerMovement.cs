@@ -25,8 +25,6 @@ public class PLYR_PlayerMovement : MonoBehaviour
     public int smokeBombs = 2;
     public GameObject smokeBomb;
 
-    public Animator vaultOpen;
-
     private float t = 0;
 
     // Start is called before the first frame update
