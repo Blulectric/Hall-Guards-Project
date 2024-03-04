@@ -17,6 +17,9 @@ public class PLYR_PlayerMovement : MonoBehaviour
 
     private float xRotation = 0f;
 
+    private float camBob = 0;
+    public float baseCamHeight = 1.63f;
+
     public bool crouching = false;
 
     public int smokeBombs = 2;
@@ -44,6 +47,15 @@ public class PLYR_PlayerMovement : MonoBehaviour
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.timeScale;// removed deltatime bacuse lag spikes would cause the camera to jolt really badly, timescale still lets the camera be frozen when game is paused
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.timeScale;
+
+        float absSpeed = (Mathf.Abs(x) + Mathf.Abs(z));
+        
+        if (absSpeed > 0 )
+        {
+            absSpeed = Mathf.Clamp(absSpeed, 0, 1);
+            camBob += Time.deltaTime*absSpeed;
+            playerCamera.localPosition = new Vector3((Mathf.Cos(camBob * 5) / 3), baseCamHeight+(Mathf.Cos(camBob*10)/3), 0);
+        }
 
         if (Input.GetKeyDown("left ctrl"))
         {

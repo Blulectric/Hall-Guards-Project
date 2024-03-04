@@ -157,6 +157,12 @@ public class NPC_EnemyBehavior : MonoBehaviour
             }
         }
 
+        if (agent.velocity.magnitude == 0)
+        {
+            animator.SetBool("isWalking", false);
+        } else {
+            animator.SetBool("isWalking", true);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -246,10 +252,11 @@ public class NPC_EnemyBehavior : MonoBehaviour
     {
         if (wanderRegion == null) { Debug.LogError("forgot to set a wander region for" + transform.name); }
 
-
         if (wanderTimer >= wanderDelay)
         {
             wanderTimer = 0f;
+
+            //animator.SetBool("isWalking", true);
 
             //cool code snippet i found that easily picks a random location within a block area
             Vector3 rndPosWithin;
@@ -257,8 +264,10 @@ public class NPC_EnemyBehavior : MonoBehaviour
             rndPosWithin = wanderRegion.transform.TransformPoint(rndPosWithin * .5f);
             destination = rndPosWithin;
 
+            //animator.SetBool("isWalking", true);
+
             agent.SetDestination(destination);
-        }
+        } 
 
         if ((transform.position - destination).magnitude < stopDist + 1f)
         {

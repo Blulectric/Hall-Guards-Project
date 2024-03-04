@@ -22,6 +22,8 @@ public class NPC_EnemySight : MonoBehaviour
 
     public PLYR_Health playerHP;
 
+    public Animator animator;
+
     [SerializeField]
     private ModeSelector modes;
 
@@ -95,6 +97,7 @@ public class NPC_EnemySight : MonoBehaviour
 
         if (inSightofSelf)
         {
+            animator.SetBool("isWalking", false);
             sightLight.color = new Color(1.0f, 0.8f, 0); //orange.
             enemyBody.transform.rotation = Quaternion.LookRotation(PlayerPos.position - enemyBody.transform.position); //look in direction of noticed player
         }
