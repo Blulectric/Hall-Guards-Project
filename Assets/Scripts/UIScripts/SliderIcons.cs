@@ -10,8 +10,6 @@ public class SliderIcons : MonoBehaviour
 
     public Slider musicSlider, sfxSlider;
 
-    public static float _musicVolume, _sfxVolume;
-
     public void ChangeMusicIcon()
     {
         if (musicSlider.value == musicSlider.minValue)

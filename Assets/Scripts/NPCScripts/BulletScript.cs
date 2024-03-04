@@ -32,6 +32,7 @@ public class BulletScript : MonoBehaviour
             playerHP.takeDamage(5);
             //Destroy(gameObject);
         } 
+        
         Destroy(gameObject);
     }
 

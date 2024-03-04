@@ -21,6 +21,8 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
     private PLYR_Health playerHP;
 
+    public Transform Robot;
+
     public float wanderDelay = 5f;
     private float wanderTimer = 0f;
 
@@ -61,7 +63,7 @@ public class NPC_EnemyBehavior : MonoBehaviour
         BigBad
     };
 
-    public ParticleSystem explosionParticleBurst;
+    public GameObject explosionParticleBurst;
 
     // Start is called before the first frame update
     void Start()
@@ -277,16 +279,11 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
     private void DestroyEnemy()
     {
-        if (explosionParticleBurst == null)
-        {
-            Debug.Log("No Particle Found");
-        } else
-        {
-            Debug.Log("Played Particle");
-            explosionParticleBurst.Play();
-        }
 
-        gameObject.SetActive(false);
+        GameObject deathEffect = Instantiate(explosionParticleBurst, Robot.position, Robot.rotation);
+        Destroy(gameObject);
+        //Destroy(deathEffect, 2.5f);
+
 
         /*if (!explosionParticleBurst.IsAlive())
         {
