@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxValue: 0.1
   musicValue: 0.1
-  startValue: 0.1
+  startValue: 0.75
   trackerChangeEvent:
     m_PersistentCalls:
       m_Calls: []
