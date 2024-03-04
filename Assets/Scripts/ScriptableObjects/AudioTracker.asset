@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd306362a69343c4f8025b8381b44045, type: 3}
   m_Name: AudioTracker
   m_EditorClassIdentifier: 
-  sfxValue: 0.1
-  musicValue: 0.1
-  startValue: 0.7
+  sfxValue: 0.2
+  musicValue: 0.2
+  startValue: 0.5
   trackerChangeEvent:
     m_PersistentCalls:
       m_Calls: []

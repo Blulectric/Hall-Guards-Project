@@ -63,8 +63,6 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
     public ParticleSystem explosionParticleBurst;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +78,7 @@ public class NPC_EnemyBehavior : MonoBehaviour
         cam = Camera.main;
 
         animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -103,8 +102,7 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
         if (HP <= 0)
         {
-            //explosionParticleBurst.Play(); //play a particle here
-            Destroy(gameObject);
+            DestroyEnemy();
         }
 
     }
@@ -130,6 +128,7 @@ public class NPC_EnemyBehavior : MonoBehaviour
 
             returning = true; //just a var to check when the thing returns home from a chase
 
+            
         }
         else
         {
@@ -265,6 +264,24 @@ public class NPC_EnemyBehavior : MonoBehaviour
         {
             wanderTimer += Time.deltaTime; //start timer when at destination
         }
+    }
+
+    private void DestroyEnemy()
+    {
+        if (explosionParticleBurst == null)
+        {
+            Debug.Log("No Particle Found");
+        } else
+        {
+            Debug.Log("Played Particle");
+            explosionParticleBurst.Play();
+        }
+
+        gameObject.SetActive(false);
+
+        /*if (!explosionParticleBurst.IsAlive())
+        {
+        }*/
     }
 
 

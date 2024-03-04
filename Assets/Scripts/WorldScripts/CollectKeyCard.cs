@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollectKeyCard : MonoBehaviour
 {
+    public ObjectiveKeeper objective;
 
     public PromptTrigger promptTrigger; //the trigger gameobject containing the PromptTrigger script
 
@@ -28,6 +29,7 @@ public class CollectKeyCard : MonoBehaviour
         if (promptTrigger.completed == true && triggered == false)
         {
             triggered = true;
+            objective.ChangeObjectiveText("Open Vault Door");
             //keycardDoorTrigger.transform.position = intendedPosition; //unbury the trigger and put it in front of the door
             AudioManager.Instance.PlaySFX("PickupSFX");
             keycardDoorTrigger.SetActive(true);

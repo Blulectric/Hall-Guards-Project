@@ -6,9 +6,11 @@ public class KeycardDoor : MonoBehaviour
 {
     public Animator vaultOpen;
 
-    public Animation slidingDoorAnim;
+    public Animator slidingDoor;
 
     public PromptTrigger promptTrigger; //the trigger gameobject containing the PromptTrigger script
+
+    public ObjectiveKeeper objective;
 
     private bool triggered = false;
 
@@ -21,6 +23,8 @@ public class KeycardDoor : MonoBehaviour
             //i'll play Azalee's door sliding animation here but idk if this even is the right code for it ;-;
             //animation["AnimationName"].wrapMode = WrapMode.Once;
             //animation.Play("AnimationName");
+            objective.ChangeObjectiveText("Steal the Documents");
+            slidingDoor.SetTrigger("OpenDoor");
             vaultOpen.SetTrigger("Open");
 
             Destroy(gameObject);

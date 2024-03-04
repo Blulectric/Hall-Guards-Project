@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WLD_RunGunTrigger : MonoBehaviour
 {
+    public ObjectiveKeeper objective;
 
     public GameObject RunGunUI;
     //public GameObject RunGunCrosshairUI;
@@ -43,6 +44,7 @@ public class WLD_RunGunTrigger : MonoBehaviour
             Player.transform.localRotation = Quaternion.Euler(0, 180, 0);
             GENOCIDE = true;
             RunGunUI.SetActive(false);
+            objective.ChangeObjectiveText("Escape!");
             //RunGunCrosshairUI.SetActive(true);
             AudioManager.Instance.PlayMusic("Run Music");
             Time.timeScale = 1f;

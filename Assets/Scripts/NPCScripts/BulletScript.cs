@@ -30,9 +30,9 @@ public class BulletScript : MonoBehaviour
         if (collider.gameObject==Player)
         {
             playerHP.takeDamage(5);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         } 
-       
+        Destroy(gameObject);
     }
 
 
